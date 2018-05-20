@@ -13,6 +13,11 @@
 		0832D96820B13FC200829871 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0832D96720B13FC200829871 /* Assets.xcassets */; };
 		0832D96B20B13FC200829871 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0832D96920B13FC200829871 /* LaunchScreen.storyboard */; };
 		0832D96E20B13FC200829871 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0832D96D20B13FC200829871 /* main.m */; };
+		0832D97A20B149E400829871 /* ImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0832D97920B149E400829871 /* ImageTableViewCell.m */; };
+		0832D97E20B14EFF00829871 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0832D97D20B14EFF00829871 /* NetworkManager.m */; };
+		0832D98220B16B8B00829871 /* responseImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0832D98120B16B8B00829871 /* responseImage.m */; };
+		0832D98920B17B3E00829871 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 0832D98820B17B3E00829871 /* Utilities.m */; };
+		0832D98C20B1834D00829871 /* NSString+NSString_Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 0832D98B20B1834D00829871 /* NSString+NSString_Utilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,17 @@
 		0832D96A20B13FC200829871 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0832D96C20B13FC200829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0832D96D20B13FC200829871 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0832D97820B149E400829871 /* ImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageTableViewCell.h; sourceTree = "<group>"; };
+		0832D97920B149E400829871 /* ImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageTableViewCell.m; sourceTree = "<group>"; };
+		0832D97C20B14EFF00829871 /* NetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
+		0832D97D20B14EFF00829871 /* NetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
+		0832D98020B16B8B00829871 /* responseImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = responseImage.h; sourceTree = "<group>"; };
+		0832D98120B16B8B00829871 /* responseImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = responseImage.m; sourceTree = "<group>"; };
+		0832D98420B175D200829871 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		0832D98720B17B3E00829871 /* Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
+		0832D98820B17B3E00829871 /* Utilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
+		0832D98A20B1834D00829871 /* NSString+NSString_Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+NSString_Utilities.h"; sourceTree = "<group>"; };
+		0832D98B20B1834D00829871 /* NSString+NSString_Utilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+NSString_Utilities.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +78,10 @@
 				0832D95F20B13FC200829871 /* AppDelegate.m */,
 				0832D96120B13FC200829871 /* ViewController.h */,
 				0832D96220B13FC200829871 /* ViewController.m */,
+				0832D98320B175AE00829871 /* Utilities */,
+				0832D97F20B16B6B00829871 /* Model */,
+				0832D97B20B14EE400829871 /* Network Manager */,
+				0832D97720B149E400829871 /* Custom Cells */,
 				0832D96420B13FC200829871 /* Main.storyboard */,
 				0832D96720B13FC200829871 /* Assets.xcassets */,
 				0832D96920B13FC200829871 /* LaunchScreen.storyboard */,
@@ -69,6 +89,45 @@
 				0832D96D20B13FC200829871 /* main.m */,
 			);
 			path = Viewer;
+			sourceTree = "<group>";
+		};
+		0832D97720B149E400829871 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0832D97820B149E400829871 /* ImageTableViewCell.h */,
+				0832D97920B149E400829871 /* ImageTableViewCell.m */,
+			);
+			path = "Custom Cells";
+			sourceTree = "<group>";
+		};
+		0832D97B20B14EE400829871 /* Network Manager */ = {
+			isa = PBXGroup;
+			children = (
+				0832D97C20B14EFF00829871 /* NetworkManager.h */,
+				0832D97D20B14EFF00829871 /* NetworkManager.m */,
+			);
+			path = "Network Manager";
+			sourceTree = "<group>";
+		};
+		0832D97F20B16B6B00829871 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0832D98020B16B8B00829871 /* responseImage.h */,
+				0832D98120B16B8B00829871 /* responseImage.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0832D98320B175AE00829871 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				0832D98420B175D200829871 /* Constants.h */,
+				0832D98720B17B3E00829871 /* Utilities.h */,
+				0832D98820B17B3E00829871 /* Utilities.m */,
+				0832D98A20B1834D00829871 /* NSString+NSString_Utilities.h */,
+				0832D98B20B1834D00829871 /* NSString+NSString_Utilities.m */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,7 +202,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0832D96320B13FC200829871 /* ViewController.m in Sources */,
+				0832D97A20B149E400829871 /* ImageTableViewCell.m in Sources */,
 				0832D96E20B13FC200829871 /* main.m in Sources */,
+				0832D97E20B14EFF00829871 /* NetworkManager.m in Sources */,
+				0832D98220B16B8B00829871 /* responseImage.m in Sources */,
+				0832D98920B17B3E00829871 /* Utilities.m in Sources */,
+				0832D98C20B1834D00829871 /* NSString+NSString_Utilities.m in Sources */,
 				0832D96020B13FC200829871 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
