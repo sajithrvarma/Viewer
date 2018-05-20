@@ -13,6 +13,7 @@
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UINavigationBar* navbar;
+    UINavigationItem* navItem;
 }
 @end
 
@@ -35,14 +36,10 @@
 }
 -(void)setupNavigationBar
 {
-     navbar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
-    UINavigationItem* navItem = [[UINavigationItem alloc] initWithTitle:self.title];
-    // [navbar setBarTintColor:[UIColor lightGrayColor]];
-    UIBarButtonItem* cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(onTapCancel:)];
-    navItem.leftBarButtonItem = cancelBtn;
-    
-    UIBarButtonItem* doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(onTapDone:)];
-    navItem.rightBarButtonItem = doneBtn;
+     navbar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 64)];
+    navItem = [[UINavigationItem alloc] initWithTitle:self.title];
+    UIBarButtonItem *doneButton=[[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStylePlain target:self action:@selector(onTapDone:)];
+    navItem.rightBarButtonItem = doneButton;
     [navbar setItems:@[navItem]];
     [self.view addSubview:navbar];
     [self.view layoutIfNeeded];
@@ -50,12 +47,9 @@
 
 
 -(void)onTapDone:(UIBarButtonItem*)item{
-    
+    [self refresh];
 }
 
--(void)onTapCancel:(UIBarButtonItem*)item{
-    
-}
 - (void)setupView{
     self.imageLoader = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.imageLoader.dataSource =self;
@@ -64,6 +58,9 @@
      [self setupNavigationBar];
    // [self addConstraints:self.imageLoader];
     [self setupAuto];
+    [self refresh];
+}
+-(void)refresh{
     [NetworkManager fetchDatawithCompletion:^(NSDictionary *data) {
         NSArray *imageList = [data objectForKey:@"rows"];
         self.imageDataList =[Utilities parseDictionaryListToImageModelList:imageList ];
@@ -72,10 +69,10 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             // do work here
             [self.imageLoader reloadData];
+            [navItem setTitle:self.navTitle];
         });
     }];
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -127,13 +124,18 @@
 }
 -(void)setupAuto{
     self.imageLoader.translatesAutoresizingMaskIntoConstraints = false;
-    [[self.imageLoader.topAnchor constraintEqualToAnchor:self.view.topAnchor] setActive:YES] ;
+    [[self.imageLoader.topAnchor constraintEqualToAnchor:navbar.bottomAnchor] setActive:YES] ;
     [[self.imageLoader.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor] setActive:YES] ;
        [[self.imageLoader.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor] setActive:YES] ;
     [[self.imageLoader.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor] setActive:YES] ;
 
+    //navview
+    navbar.translatesAutoresizingMaskIntoConstraints = false;
+    [[navbar.topAnchor constraintEqualToAnchor:self.view.topAnchor] setActive:YES] ;
+    [[navbar.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor] setActive:YES] ;
+    [[navbar.heightAnchor constraintEqualToConstant:84] setActive:YES] ;
+    [[navbar.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor] setActive:YES] ;
     
-  
 }
 
 @end
