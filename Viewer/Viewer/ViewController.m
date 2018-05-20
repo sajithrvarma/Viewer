@@ -11,7 +11,9 @@
 #import "NetworkManager.h"
 #import "Utilities.h"
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
-
+{
+    UINavigationBar* navbar;
+}
 @end
 
 @implementation ViewController
@@ -20,6 +22,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [self setupView];
+    self.imageLoader.estimatedRowHeight = 10;
+    self.imageLoader.rowHeight = UITableViewAutomaticDimension;
+    [self.imageLoader registerClass:[ImageTableViewCell class]  forCellReuseIdentifier:@"Cell"];
     // Load images async
 
 }
@@ -30,7 +35,7 @@
 }
 -(void)setupNavigationBar
 {
-    UINavigationBar* navbar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
+     navbar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
     UINavigationItem* navItem = [[UINavigationItem alloc] initWithTitle:self.title];
     // [navbar setBarTintColor:[UIColor lightGrayColor]];
     UIBarButtonItem* cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(onTapCancel:)];
@@ -57,8 +62,8 @@
     self.imageLoader.delegate = self;
     [self.view addSubview:self.imageLoader];
      [self setupNavigationBar];
-    [self addConstraints:self.imageLoader];
-   
+   // [self addConstraints:self.imageLoader];
+    [self setupAuto];
     [NetworkManager fetchDatawithCompletion:^(NSDictionary *data) {
         NSArray *imageList = [data objectForKey:@"rows"];
         self.imageDataList =[Utilities parseDictionaryListToImageModelList:imageList ];
@@ -79,12 +84,10 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
-    
     ImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[ImageTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] ;
     }
-    
     // Set the data for this cell:
     responseImage *rowDetails = [self.imageDataList objectAtIndex:indexPath.row];
     [cell setupCell:rowDetails];
@@ -106,21 +109,31 @@
     /* Top space to superview Y*/
     NSLayoutConstraint *topConstraint = [NSLayoutConstraint
                                                  constraintWithItem:view attribute:NSLayoutAttributeTop
-                                                 relatedBy:NSLayoutRelationEqual toItem:self.view attribute:
-                                                 NSLayoutAttributeTop multiplier:1.0f constant:-64];
+                                                 relatedBy:NSLayoutRelationEqual toItem:navbar attribute:
+                                                 NSLayoutAttributeTop multiplier:1.0f constant:0];
     NSLayoutConstraint *rightConstraint = [NSLayoutConstraint
                                           constraintWithItem:view attribute:NSLayoutAttributeRight
                                           relatedBy:NSLayoutRelationEqual toItem:self.view attribute:
-                                          NSLayoutAttributeLeft multiplier:1.0 constant:0];
+                                          NSLayoutAttributeRight multiplier:1.0 constant:0];
     /* Top space to superview Y*/
     NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint
                                                  constraintWithItem:view attribute:NSLayoutAttributeBottom
                                                  relatedBy:NSLayoutRelationEqual toItem:self.view attribute:
-                                                 NSLayoutAttributeTop multiplier:1.0f constant:0];
+                                                 NSLayoutAttributeBottom multiplier:1.0f constant:0];
     [self.view addConstraints:@[leftConstraint, topConstraint,
                                 rightConstraint,bottomConstraint]];
+    [self.view layoutIfNeeded];
    //[view.topAnchor constraintEqualToAnchor:safe.topAnchor]
 }
+-(void)setupAuto{
+    self.imageLoader.translatesAutoresizingMaskIntoConstraints = false;
+    [[self.imageLoader.topAnchor constraintEqualToAnchor:self.view.topAnchor] setActive:YES] ;
+    [[self.imageLoader.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor] setActive:YES] ;
+       [[self.imageLoader.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor] setActive:YES] ;
+    [[self.imageLoader.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor] setActive:YES] ;
 
+    
+  
+}
 
 @end
