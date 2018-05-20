@@ -8,9 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NetworkManager : NSObject{
-   
-}
+@interface NetworkManager : NSObject
 + (void)fetchDatawithCompletion:(void (^)(NSDictionary *data))data;
 
 

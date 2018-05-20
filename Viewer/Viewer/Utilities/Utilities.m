@@ -10,6 +10,7 @@
 #import "responseImage.h"
 #import "NSString+NSString_Utilities.h"
 @implementation Utilities
+
 +(NSArray*)parseDictionaryListToImageModelList:(NSArray *)dictionaryList{
     NSMutableArray *resultList = [[NSMutableArray alloc]init];
     for (NSDictionary *element in dictionaryList) {

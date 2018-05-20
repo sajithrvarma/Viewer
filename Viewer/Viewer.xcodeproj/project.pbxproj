@@ -37,11 +37,11 @@
 		0832D97D20B14EFF00829871 /* NetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		0832D98020B16B8B00829871 /* responseImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = responseImage.h; sourceTree = "<group>"; };
 		0832D98120B16B8B00829871 /* responseImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = responseImage.m; sourceTree = "<group>"; };
-		0832D98420B175D200829871 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		0832D98720B17B3E00829871 /* Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		0832D98820B17B3E00829871 /* Utilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		0832D98A20B1834D00829871 /* NSString+NSString_Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+NSString_Utilities.h"; sourceTree = "<group>"; };
 		0832D98B20B1834D00829871 /* NSString+NSString_Utilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+NSString_Utilities.m"; sourceTree = "<group>"; };
+		0832D98E20B1CF0400829871 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,11 +121,11 @@
 		0832D98320B175AE00829871 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				0832D98420B175D200829871 /* Constants.h */,
 				0832D98720B17B3E00829871 /* Utilities.h */,
 				0832D98820B17B3E00829871 /* Utilities.m */,
 				0832D98A20B1834D00829871 /* NSString+NSString_Utilities.h */,
 				0832D98B20B1834D00829871 /* NSString+NSString_Utilities.m */,
+				0832D98E20B1CF0400829871 /* Constants.h */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";

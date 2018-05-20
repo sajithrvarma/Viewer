@@ -6,9 +6,13 @@
 //
 
 #import "ImageTableViewCell.h"
-#import "Constants.h"
-@implementation ImageTableViewCell
 
+@interface ImageTableViewCell (){
+    dispatch_queue_t queue ;
+    dispatch_queue_t main ;
+}
+@end
+@implementation ImageTableViewCell
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
@@ -25,13 +29,11 @@
 (NSString *)reuseIdentifier
 
 {
-    
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-       
-       // [self addConstraintsForCell:_descriptionLabel];
-        
+        queue = dispatch_queue_create("com.app.viewer",NULL);
+        main = dispatch_get_main_queue();
     }
     return self;
 }
@@ -56,33 +58,29 @@
     [self.contentView addSubview:_imageContainer];
     [self.contentView addSubview:_title];
     [self.contentView addSubview:_descriptionLabel];
-    [self setupAuto];
+    [self layoutCell];
     if (imageDetails.title) {
           _title.text = imageDetails.title;
     }
     if (imageDetails.descriptionText) {
         _descriptionLabel.text = imageDetails.descriptionText;
     }
-    
-    dispatch_async(dispatch_queue_create("com.app.task",NULL), ^{
+    dispatch_async(queue, ^{
         NSURL *url = [NSURL URLWithString:imageDetails.imageURL];
         UIImage *profile = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_async(main, ^{
             // do work here
             if (profile){
                 [self.imageContainer setImage:profile];
-                }
-            //
+            }
         });
     });
 }
-
--(void)setupAuto{
+-(void)layoutCell{
     UILayoutGuide *marginGuide = [self.contentView layoutMarginsGuide];
     _descriptionLabel.translatesAutoresizingMaskIntoConstraints = false;
     [[self.descriptionLabel.topAnchor constraintEqualToAnchor:marginGuide.topAnchor] setActive:YES] ;
-    [[self.descriptionLabel.widthAnchor constraintEqualToConstant:200] setActive:YES] ;
+     [[self.descriptionLabel.leadingAnchor constraintEqualToAnchor:self.title.trailingAnchor] setActive:YES] ;
     [[self.descriptionLabel.bottomAnchor constraintEqualToAnchor:marginGuide.bottomAnchor] setActive:YES] ;
     [[self.descriptionLabel.trailingAnchor constraintEqualToAnchor:marginGuide.trailingAnchor] setActive:YES] ;
     _descriptionLabel.numberOfLines = 0;
@@ -95,9 +93,9 @@
     //title
     _title.translatesAutoresizingMaskIntoConstraints = false;
     [[self.title.topAnchor constraintEqualToAnchor:marginGuide.topAnchor] setActive:YES] ;
-    [[self.title.trailingAnchor constraintEqualToAnchor:self.descriptionLabel.leadingAnchor] setActive:YES] ;
-    [[self.title.bottomAnchor constraintEqualToAnchor:marginGuide.bottomAnchor] setActive:YES] ;
     [[self.title.leadingAnchor constraintEqualToAnchor:self.imageContainer.trailingAnchor] setActive:YES] ;
+    [[self.title.bottomAnchor constraintEqualToAnchor:marginGuide.bottomAnchor] setActive:YES] ;
+    [[self.title.widthAnchor constraintEqualToConstant:100] setActive:YES] ;
     _title.numberOfLines = 0;
     [self.contentView layoutIfNeeded];
 }
