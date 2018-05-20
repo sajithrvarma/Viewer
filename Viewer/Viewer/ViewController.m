@@ -7,8 +7,10 @@
 //test
 
 #import "ViewController.h"
-
-@interface ViewController ()
+#import "ImageTableViewCell.h"
+#import "NetworkManager.h"
+#import "Utilities.h"
+@interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @end
 
@@ -17,12 +19,107 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [self setupView];
+    // Load images async
+
+}
+- (void) viewWillAppear:(BOOL)animated
+{
+   // [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [super viewWillAppear:animated];
+}
+-(void)setupNavigationBar
+{
+    UINavigationBar* navbar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
+    UINavigationItem* navItem = [[UINavigationItem alloc] initWithTitle:self.title];
+    // [navbar setBarTintColor:[UIColor lightGrayColor]];
+    UIBarButtonItem* cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(onTapCancel:)];
+    navItem.leftBarButtonItem = cancelBtn;
+    
+    UIBarButtonItem* doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(onTapDone:)];
+    navItem.rightBarButtonItem = doneBtn;
+    [navbar setItems:@[navItem]];
+    [self.view addSubview:navbar];
+    [self.view layoutIfNeeded];
 }
 
+
+-(void)onTapDone:(UIBarButtonItem*)item{
+    
+}
+
+-(void)onTapCancel:(UIBarButtonItem*)item{
+    
+}
+- (void)setupView{
+    self.imageLoader = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    self.imageLoader.dataSource =self;
+    self.imageLoader.delegate = self;
+    [self.view addSubview:self.imageLoader];
+     [self setupNavigationBar];
+    [self addConstraints:self.imageLoader];
+   
+    [NetworkManager fetchDatawithCompletion:^(NSDictionary *data) {
+        NSArray *imageList = [data objectForKey:@"rows"];
+        self.imageDataList =[Utilities parseDictionaryListToImageModelList:imageList ];
+        self.navTitle = [data objectForKey:@"title"];
+        NSLog(@"response:%@",self.imageDataList);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // do work here
+            [self.imageLoader reloadData];
+        });
+    }];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"Cell";
+    
+    ImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[ImageTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] ;
+    }
+    
+    // Set the data for this cell:
+    responseImage *rowDetails = [self.imageDataList objectAtIndex:indexPath.row];
+    [cell setupCell:rowDetails];
+    return cell;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.imageDataList.count;
+}
+
+-(void)addConstraints:(UIView*)view{
+    UILayoutGuide *safe = self.view.safeAreaLayoutGuide;
+    self.view.translatesAutoresizingMaskIntoConstraints = NO;
+    /* Leading space to superview */
+    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint
+                                                 constraintWithItem:view attribute:NSLayoutAttributeLeft
+                                                 relatedBy:NSLayoutRelationEqual toItem:self.view attribute:
+                                                 NSLayoutAttributeLeft multiplier:1.0 constant:0];
+    /* Top space to superview Y*/
+    NSLayoutConstraint *topConstraint = [NSLayoutConstraint
+                                                 constraintWithItem:view attribute:NSLayoutAttributeTop
+                                                 relatedBy:NSLayoutRelationEqual toItem:self.view attribute:
+                                                 NSLayoutAttributeTop multiplier:1.0f constant:-64];
+    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint
+                                          constraintWithItem:view attribute:NSLayoutAttributeRight
+                                          relatedBy:NSLayoutRelationEqual toItem:self.view attribute:
+                                          NSLayoutAttributeLeft multiplier:1.0 constant:0];
+    /* Top space to superview Y*/
+    NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint
+                                                 constraintWithItem:view attribute:NSLayoutAttributeBottom
+                                                 relatedBy:NSLayoutRelationEqual toItem:self.view attribute:
+                                                 NSLayoutAttributeTop multiplier:1.0f constant:0];
+    [self.view addConstraints:@[leftConstraint, topConstraint,
+                                rightConstraint,bottomConstraint]];
+   //[view.topAnchor constraintEqualToAnchor:safe.topAnchor]
 }
 
 
