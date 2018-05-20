@@ -1,3 +1,4 @@
+
 //
 //  responseImage.h
 //  Viewer
@@ -7,6 +8,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Constants.h"
 @interface responseImage : NSObject
 @property(nonatomic,strong) NSString *imageURL;
 @property(nonatomic,strong) NSString* title;

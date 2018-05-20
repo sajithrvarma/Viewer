@@ -8,7 +8,7 @@
 
 #import "responseImage.h"
 #import "NSString+NSString_Utilities.h"
-#import "Constants.h"
+
 @implementation responseImage
 - (instancetype)initWithDictionay:(NSDictionary*)details
 {
