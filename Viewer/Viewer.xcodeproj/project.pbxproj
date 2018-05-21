@@ -41,6 +41,7 @@
 		0832D98820B17B3E00829871 /* Utilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		0832D98A20B1834D00829871 /* NSString+NSString_Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+NSString_Utilities.h"; sourceTree = "<group>"; };
 		0832D98B20B1834D00829871 /* NSString+NSString_Utilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+NSString_Utilities.m"; sourceTree = "<group>"; };
+		083757A220B29E3200D7D126 /* ConstantsHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstantsHeader.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +125,7 @@
 				0832D98820B17B3E00829871 /* Utilities.m */,
 				0832D98A20B1834D00829871 /* NSString+NSString_Utilities.h */,
 				0832D98B20B1834D00829871 /* NSString+NSString_Utilities.m */,
+				083757A220B29E3200D7D126 /* ConstantsHeader.h */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";

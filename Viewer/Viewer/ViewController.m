@@ -10,15 +10,12 @@
 #import "ImageTableViewCell.h"
 #import "NetworkManager.h"
 #import "Utilities.h"
-//#import "Constants.h"
-
-
+#import "ConstantsHeader.h"
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UINavigationBar* navbar;
     UINavigationItem* navItem;
     NSString * CellIdentifier;
-    
 }
 @end
 
@@ -69,9 +66,9 @@
 -(void)refresh{
     [NetworkManager fetchDatawithCompletion:^(NSDictionary *data) {
         if (data) {
-            NSArray *imageList = [data objectForKey:@"rows"];
+            NSArray *imageList = [data objectForKey:KeyRow];
             self.imageDataList =[Utilities parseDictionaryListToImageModelList:imageList];
-            self.navTitle = [data objectForKey:@"title"];
+            self.navTitle = [data objectForKey:KeyTitle];
             //NSLog(@"response:%@",self.imageDataList);
             dispatch_async(dispatch_get_main_queue(), ^{
                 // do work here

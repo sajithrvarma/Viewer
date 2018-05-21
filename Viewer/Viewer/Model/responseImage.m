@@ -7,21 +7,21 @@
 //
 
 #import "responseImage.h"
-
+#import "ConstantsHeader.h"
 
 @implementation responseImage
 - (instancetype)initWithDictionay:(NSDictionary*)details
 {
     self = [super init];
     if (self) {
-            if ([details objectForKey:@"title"] && ![[details objectForKey:@"title"] isKindOfClass:[NSNull class]] ) {
-                  self.title = [details objectForKey:@"title"];
+            if ([details objectForKey:KeyTitle] && ![[details objectForKey:KeyTitle] isKindOfClass:[NSNull class]] ) {
+                  self.title = [details objectForKey:KeyTitle];
             }
-        if ([details objectForKey:@"imageHref"] && ![[details objectForKey:@"imageHref"] isKindOfClass:[NSNull class]] ) {
-            self.imageURL = [details objectForKey:@"imageHref"];
+        if ([details objectForKey:KeyImageUrl] && ![[details objectForKey:KeyImageUrl] isKindOfClass:[NSNull class]] ) {
+            self.imageURL = [details objectForKey:KeyImageUrl];
         }
-        if ([details objectForKey:@"description"] && ![[details objectForKey:@"description"] isKindOfClass:[NSNull class]]) {
-            self.descriptionText = [details objectForKey:@"description"];
+        if ([details objectForKey:KeyDecription] && ![[details objectForKey:KeyDecription] isKindOfClass:[NSNull class]]) {
+            self.descriptionText = [details objectForKey:KeyDecription];
         }
     }
     return self;
