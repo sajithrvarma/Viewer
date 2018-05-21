@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-
 @interface ViewController : UIViewController
 @property(nonatomic,strong) UITableView *imageLoader;
 @property(nonatomic,strong) NSArray* imageDataList;

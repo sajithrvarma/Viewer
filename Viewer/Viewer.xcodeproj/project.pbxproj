@@ -41,7 +41,6 @@
 		0832D98820B17B3E00829871 /* Utilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		0832D98A20B1834D00829871 /* NSString+NSString_Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+NSString_Utilities.h"; sourceTree = "<group>"; };
 		0832D98B20B1834D00829871 /* NSString+NSString_Utilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+NSString_Utilities.m"; sourceTree = "<group>"; };
-		0832D98E20B1CF0400829871 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +124,6 @@
 				0832D98820B17B3E00829871 /* Utilities.m */,
 				0832D98A20B1834D00829871 /* NSString+NSString_Utilities.h */,
 				0832D98B20B1834D00829871 /* NSString+NSString_Utilities.m */,
-				0832D98E20B1CF0400829871 /* Constants.h */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -345,7 +343,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Viewer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sajith.Viewer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sajith.ViewerImage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -358,7 +356,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Viewer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sajith.Viewer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sajith.ViewerImage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -8,8 +8,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Constants.h"
+#import "NSString+NSString_Utilities.h"
+#import "ViewController.h"
 @interface responseImage : NSObject
+{
+    
+}
 @property(nonatomic,strong) NSString *imageURL;
 @property(nonatomic,strong) NSString* title;
 @property(nonatomic,strong) NSString* descriptionText;

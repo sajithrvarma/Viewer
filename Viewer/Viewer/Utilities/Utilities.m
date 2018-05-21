@@ -7,8 +7,7 @@
 //
 
 #import "Utilities.h"
-#import "responseImage.h"
-#import "NSString+NSString_Utilities.h"
+
 @implementation Utilities
 
 +(NSArray*)parseDictionaryListToImageModelList:(NSArray *)dictionaryList{
