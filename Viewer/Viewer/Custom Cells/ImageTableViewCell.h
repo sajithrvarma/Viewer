@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "responseImage.h"
-
 @interface ImageTableViewCell : UITableViewCell
 @property(nonatomic,strong) UIImageView * imageContainer;
 @property(nonatomic,strong)  UILabel *title;

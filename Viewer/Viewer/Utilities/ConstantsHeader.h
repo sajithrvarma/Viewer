@@ -10,4 +10,4 @@
  #define KeyTitle  @"title"
  #define KeyImageUrl  @"imageHref"
  #define KeyDecription  @"description"
-
+#define ErrorMessge @"Some error occured."

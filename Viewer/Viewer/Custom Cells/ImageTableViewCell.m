@@ -20,7 +20,6 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
     // Configure the view for the selected state
 }
 
@@ -38,6 +37,25 @@
     return self;
 }
 -(void)setupCell:(responseImage *)imageDetails{
+    [self addCellComponents];
+    [self layoutCell];
+    if (imageDetails.title) {
+          self.title.text = imageDetails.title;
+    }
+    if (imageDetails.descriptionText) {
+        self.descriptionLabel.text = imageDetails.descriptionText;
+    }
+    dispatch_async(queue, ^{
+        NSURL *url = [NSURL URLWithString:imageDetails.imageURL];
+        UIImage *profile = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
+        dispatch_async(main, ^{
+            if (profile &&self.imageContainer ){
+                [self.imageContainer setImage:profile];
+            }
+        });
+    });
+}
+-(void)addCellComponents{
     if (_imageContainer) {
         [_imageContainer removeFromSuperview];
     }
@@ -47,37 +65,18 @@
     if (_title) {
         [_title removeFromSuperview];
     }
-    _imageContainer = [[UIImageView alloc] initWithFrame:CGRectMake(4.0f, 3.0f, 39.0f,
-                                                                    38.0f)];
+    _imageContainer = [[UIImageView alloc] initWithFrame:CGRectMake(4.0f, 3.0f, 39.0f,38.0f)];
     [_imageContainer setContentMode:UIViewContentModeScaleAspectFit];
-    _title = [[UILabel alloc] initWithFrame:CGRectMake(58.0f, 8.0f, 50.0f,
-                                                       27.0f)];
+    _title = [[UILabel alloc] initWithFrame:CGRectMake(58.0f, 8.0f, 50.0f,27.0f)];
     _title.textAlignment = NSTextAlignmentCenter;
-    _descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(120.0f, 8.0f, 50.0f,
-                                                                  27.0f)];
+    _descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(120.0f, 8.0f, 50.0f,27.0f)];
     [self.contentView addSubview:_imageContainer];
     [self.contentView addSubview:_title];
     [self.contentView addSubview:_descriptionLabel];
-    [self layoutCell];
-    if (imageDetails.title) {
-          _title.text = imageDetails.title;
-    }
-    if (imageDetails.descriptionText) {
-        _descriptionLabel.text = imageDetails.descriptionText;
-    }
-    dispatch_async(queue, ^{
-        NSURL *url = [NSURL URLWithString:imageDetails.imageURL];
-        UIImage *profile = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
-        dispatch_async(main, ^{
-            // do work here
-            if (profile){
-                [self.imageContainer setImage:profile];
-            }
-        });
-    });
 }
 -(void)layoutCell{
     UILayoutGuide *marginGuide = [self.contentView layoutMarginsGuide];
+    //desc
     _descriptionLabel.translatesAutoresizingMaskIntoConstraints = false;
     [[self.descriptionLabel.topAnchor constraintEqualToAnchor:marginGuide.topAnchor] setActive:YES] ;
      [[self.descriptionLabel.leadingAnchor constraintEqualToAnchor:self.title.trailingAnchor] setActive:YES] ;

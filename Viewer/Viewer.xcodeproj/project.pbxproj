@@ -17,7 +17,6 @@
 		0832D97E20B14EFF00829871 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0832D97D20B14EFF00829871 /* NetworkManager.m */; };
 		0832D98220B16B8B00829871 /* responseImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0832D98120B16B8B00829871 /* responseImage.m */; };
 		0832D98920B17B3E00829871 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 0832D98820B17B3E00829871 /* Utilities.m */; };
-		0832D98C20B1834D00829871 /* NSString+NSString_Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 0832D98B20B1834D00829871 /* NSString+NSString_Utilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,8 +38,6 @@
 		0832D98120B16B8B00829871 /* responseImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = responseImage.m; sourceTree = "<group>"; };
 		0832D98720B17B3E00829871 /* Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		0832D98820B17B3E00829871 /* Utilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
-		0832D98A20B1834D00829871 /* NSString+NSString_Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+NSString_Utilities.h"; sourceTree = "<group>"; };
-		0832D98B20B1834D00829871 /* NSString+NSString_Utilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+NSString_Utilities.m"; sourceTree = "<group>"; };
 		083757A220B29E3200D7D126 /* ConstantsHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstantsHeader.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,8 +120,6 @@
 			children = (
 				0832D98720B17B3E00829871 /* Utilities.h */,
 				0832D98820B17B3E00829871 /* Utilities.m */,
-				0832D98A20B1834D00829871 /* NSString+NSString_Utilities.h */,
-				0832D98B20B1834D00829871 /* NSString+NSString_Utilities.m */,
 				083757A220B29E3200D7D126 /* ConstantsHeader.h */,
 			);
 			path = Utilities;
@@ -207,7 +202,6 @@
 				0832D97E20B14EFF00829871 /* NetworkManager.m in Sources */,
 				0832D98220B16B8B00829871 /* responseImage.m in Sources */,
 				0832D98920B17B3E00829871 /* Utilities.m in Sources */,
-				0832D98C20B1834D00829871 /* NSString+NSString_Utilities.m in Sources */,
 				0832D96020B13FC200829871 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

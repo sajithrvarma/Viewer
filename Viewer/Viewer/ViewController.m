@@ -29,7 +29,6 @@
     self.imageLoader.rowHeight = UITableViewAutomaticDimension;
     CellIdentifier = @"Cell";
     [self.imageLoader registerClass:[ImageTableViewCell class]  forCellReuseIdentifier:CellIdentifier];
-    // Load images async
 
 }
 - (void) viewWillAppear:(BOOL)animated
@@ -58,8 +57,7 @@
     self.imageLoader.dataSource =self;
     self.imageLoader.delegate = self;
     [self.view addSubview:self.imageLoader];
-     [self setupNavigationBar];
-   // [self addConstraints:self.imageLoader];
+    [self setupNavigationBar];
     [self layoutView];
     [self refresh];
 }
@@ -69,18 +67,15 @@
             NSArray *imageList = [data objectForKey:KeyRow];
             self.imageDataList =[Utilities parseDictionaryListToImageModelList:imageList];
             self.navTitle = [data objectForKey:KeyTitle];
-            //NSLog(@"response:%@",self.imageDataList);
             dispatch_async(dispatch_get_main_queue(), ^{
-                // do work here
                 [self.imageLoader reloadData];
                 [navItem setTitle:self.navTitle];
             });
         }
         else{
-            NSLog(@"some error occured");
+            NSLog(ErrorMessge);
             [self showAlert];
         }
-
     }];
 }
 - (void)didReceiveMemoryWarning {
@@ -118,7 +113,7 @@
 -(void)showAlert{
     UIAlertController * alert = [UIAlertController
                                  alertControllerWithTitle:@"Oops!!!"
-                                 message:@"Some error occured."
+                                 message:ErrorMessge
                                  preferredStyle:UIAlertControllerStyleAlert];
     //Add Buttons
     UIAlertAction* okButton = [UIAlertAction
