@@ -25,10 +25,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [self setupView];
-    self.imageLoader.estimatedRowHeight = 10;
-    self.imageLoader.rowHeight = UITableViewAutomaticDimension;
-    CellIdentifier = @"Cell";
-    [self.imageLoader registerClass:[ImageTableViewCell class]  forCellReuseIdentifier:CellIdentifier];
+
 
 }
 - (void) viewWillAppear:(BOOL)animated
@@ -53,13 +50,20 @@
 }
 
 - (void)setupView{
+    [self setupTableView];
+    [self setupNavigationBar];
+    [self layoutView];
+    [self refresh];
+}
+-(void)setupTableView{
     self.imageLoader = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.imageLoader.dataSource =self;
     self.imageLoader.delegate = self;
     [self.view addSubview:self.imageLoader];
-    [self setupNavigationBar];
-    [self layoutView];
-    [self refresh];
+    self.imageLoader.estimatedRowHeight = 10;
+    self.imageLoader.rowHeight = UITableViewAutomaticDimension;
+    CellIdentifier = @"Cell";
+    [self.imageLoader registerClass:[ImageTableViewCell class]  forCellReuseIdentifier:CellIdentifier];
 }
 -(void)refresh{
     [NetworkManager fetchDatawithCompletion:^(NSDictionary *data) {

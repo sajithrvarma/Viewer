@@ -17,7 +17,18 @@
 		0832D97E20B14EFF00829871 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0832D97D20B14EFF00829871 /* NetworkManager.m */; };
 		0832D98220B16B8B00829871 /* responseImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0832D98120B16B8B00829871 /* responseImage.m */; };
 		0832D98920B17B3E00829871 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 0832D98820B17B3E00829871 /* Utilities.m */; };
+		083757AA20B2BF9500D7D126 /* ViewerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 083757A920B2BF9500D7D126 /* ViewerTests.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		083757AC20B2BF9500D7D126 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0832D95320B13FC200829871 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0832D95A20B13FC200829871;
+			remoteInfo = Viewer;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0832D95B20B13FC200829871 /* Viewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Viewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,10 +50,20 @@
 		0832D98720B17B3E00829871 /* Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		0832D98820B17B3E00829871 /* Utilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		083757A220B29E3200D7D126 /* ConstantsHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstantsHeader.h; sourceTree = "<group>"; };
+		083757A720B2BF9500D7D126 /* ViewerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViewerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		083757A920B2BF9500D7D126 /* ViewerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewerTests.m; sourceTree = "<group>"; };
+		083757AB20B2BF9500D7D126 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		0832D95820B13FC200829871 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		083757A420B2BF9500D7D126 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -56,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				0832D95D20B13FC200829871 /* Viewer */,
+				083757A820B2BF9500D7D126 /* ViewerTests */,
 				0832D95C20B13FC200829871 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -64,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				0832D95B20B13FC200829871 /* Viewer.app */,
+				083757A720B2BF9500D7D126 /* ViewerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -125,6 +148,15 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		083757A820B2BF9500D7D126 /* ViewerTests */ = {
+			isa = PBXGroup;
+			children = (
+				083757A920B2BF9500D7D126 /* ViewerTests.m */,
+				083757AB20B2BF9500D7D126 /* Info.plist */,
+			);
+			path = ViewerTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -145,6 +177,24 @@
 			productReference = 0832D95B20B13FC200829871 /* Viewer.app */;
 			productType = "com.apple.product-type.application";
 		};
+		083757A620B2BF9500D7D126 /* ViewerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 083757B020B2BF9500D7D126 /* Build configuration list for PBXNativeTarget "ViewerTests" */;
+			buildPhases = (
+				083757A320B2BF9500D7D126 /* Sources */,
+				083757A420B2BF9500D7D126 /* Frameworks */,
+				083757A520B2BF9500D7D126 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				083757AD20B2BF9500D7D126 /* PBXTargetDependency */,
+			);
+			name = ViewerTests;
+			productName = ViewerTests;
+			productReference = 083757A720B2BF9500D7D126 /* ViewerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -157,6 +207,11 @@
 					0832D95A20B13FC200829871 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+					};
+					083757A620B2BF9500D7D126 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 0832D95A20B13FC200829871;
 					};
 				};
 			};
@@ -174,6 +229,7 @@
 			projectRoot = "";
 			targets = (
 				0832D95A20B13FC200829871 /* Viewer */,
+				083757A620B2BF9500D7D126 /* ViewerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -186,6 +242,13 @@
 				0832D96B20B13FC200829871 /* LaunchScreen.storyboard in Resources */,
 				0832D96820B13FC200829871 /* Assets.xcassets in Resources */,
 				0832D96620B13FC200829871 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		083757A520B2BF9500D7D126 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +269,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		083757A320B2BF9500D7D126 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				083757AA20B2BF9500D7D126 /* ViewerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		083757AD20B2BF9500D7D126 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0832D95A20B13FC200829871 /* Viewer */;
+			targetProxy = 083757AC20B2BF9500D7D126 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0832D96420B13FC200829871 /* Main.storyboard */ = {
@@ -358,6 +437,34 @@
 			};
 			name = Release;
 		};
+		083757AE20B2BF9500D7D126 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ViewerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sajith.ViewerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Viewer.app/Viewer";
+			};
+			name = Debug;
+		};
+		083757AF20B2BF9500D7D126 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ViewerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sajith.ViewerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Viewer.app/Viewer";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -375,6 +482,15 @@
 			buildConfigurations = (
 				0832D97220B13FC200829871 /* Debug */,
 				0832D97320B13FC200829871 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		083757B020B2BF9500D7D126 /* Build configuration list for PBXNativeTarget "ViewerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				083757AE20B2BF9500D7D126 /* Debug */,
+				083757AF20B2BF9500D7D126 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

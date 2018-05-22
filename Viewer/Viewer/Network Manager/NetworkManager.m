@@ -33,4 +33,16 @@
     }];
     [task resume];
 }
+//+(void) retrieveJSONWithConnectionAtURL: (NSURL *) url completionHandler: (void (^)(NSData *data, NSURLResponse *response, NSError *error)) handler {
+//    //        handler(data, response, error);
+//    NSURLRequest *request = [[NSURLRequest alloc]initWithURL:url];
+//    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+//    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
+//            handler(data,response,connectionError);
+//        }];
+//    
+//
+//    
+//
+//}
 @end
