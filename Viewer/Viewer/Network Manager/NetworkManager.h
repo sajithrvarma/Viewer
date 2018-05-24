@@ -10,6 +10,6 @@
 
 @interface NetworkManager : NSObject
 + (void)fetchDatawithCompletion:(void (^)(NSDictionary *data))data;
-+(void) retrieveJSONAtURL: (NSURL *) url completionHandler: (void (^)(NSData *data, NSURLResponse *response, NSError *error)) handler ;
++(void) retrieveJSONWithConnectionAtURL: (NSURL *) url completionHandler: (void (^)(NSData *data, NSURLResponse *response, NSError *error)) handler;
 
 @end

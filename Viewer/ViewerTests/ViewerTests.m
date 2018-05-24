@@ -73,7 +73,7 @@
     XCTestExpectation *expectation = [self expectationWithDescription:@"retrieve json"];
     NSURL *url = [NSURL URLWithString:
                   @"https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"];
-    [NetworkManager retrieveJSONAtURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    [NetworkManager retrieveJSONWithConnectionAtURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         XCTAssertNotNil(data);
             NSString *responseString = [[NSString alloc]initWithData:data encoding:kCFStringEncodingUTF8];
             NSData *datanew = [responseString dataUsingEncoding:NSUTF8StringEncoding];
